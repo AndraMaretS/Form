@@ -6,8 +6,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioGroup;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -18,9 +19,10 @@ public class MainActivity extends AppCompatActivity {
 
     EditText etNis, etNama, etTgl;
     Button buttonOK;
-    TextView tvHasil;
-    RadioGroup rgJK;
+    TextView tvHasil, tvJk, tvHobi;
+    RadioButton rbLk, rbPr;
     Spinner spProvinsi, spKota;
+    CheckBox cbOR, cbBaca, cbSeni;
     String[][] arKota = {{"Jakarta Barat", "Jakarta Pusat", "Jakarta Selatan", "Jakarta Timur", "Jakarta Utara"},
             {"Bandung", "Cirebon", "Bekasi"}, {"Semarang", "Surakarta", "Magelang"}, {"Surabaya", "Malang", "Blitar"}, {"Denpasar"}};
     ArrayList<String> listKota = new ArrayList<>();
@@ -37,9 +39,15 @@ public class MainActivity extends AppCompatActivity {
         etTgl = (EditText) findViewById(R.id.editTextTglLhr);
         spProvinsi = (Spinner) findViewById(R.id.spinnerProvinsi);
         spKota = (Spinner) findViewById(R.id.spinnerKota);
-        rgJK = (RadioGroup) findViewById(R.id.radioGroupJK);
+        rbLk = (RadioButton) findViewById(R.id.radioButtonLk);
+        rbPr = (RadioButton) findViewById(R.id.radioButtonPr);
+        cbOR = (CheckBox) findViewById(R.id.checkBoxOR);
+        cbBaca = (CheckBox) findViewById(R.id.checkBoxBaca);
+        cbSeni = (CheckBox) findViewById(R.id.checkBoxSeni);
         buttonOK = (Button) findViewById(R.id.buttonOk);
         tvHasil = (TextView) findViewById(R.id.textViewHasil);
+        tvJk = (TextView) findViewById(R.id.textViewJk);
+        tvHobi = (TextView) findViewById(R.id.textViewHobi);
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listKota);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -73,10 +81,24 @@ public class MainActivity extends AppCompatActivity {
             String nis = etNis.getText().toString();
             String nama = etNama.getText().toString();
             String tgl = etTgl.getText().toString();
+            String kota = spKota.getSelectedItem().toString();
+            String provinsi = spProvinsi.getSelectedItem().toString();
             tvHasil.setText("NIS                    : " + nis + "\n" +
                     "Nama                : " + nama + "\n" +
-                    "Asal                   : " + spKota.getSelectedItem().toString() + ", " + spProvinsi.getSelectedItem().toString() + "\n" +
+                    "Asal                   : " + kota + ", " + provinsi + "\n" +
                     "Tanggal Lahir   : " + tgl);
+
+            String Jk = null;
+            if (rbLk.isChecked()) {
+                Jk = rbLk.getText().toString();
+            } else if (rbPr.isChecked()) {
+                Jk = rbPr.getText().toString();
+            }
+            if (Jk == null) {
+                tvJk.setText("Anda belum memilih Data Jenis KElamin");
+            } else {
+                tvJk.setText("Jenis Kelamin : " + Jk);
+            }
         }
     }
 

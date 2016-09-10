@@ -166,7 +166,19 @@
             android:id="@+id/textViewHasil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="HasilNis" />
+            tools:text="Hasil" />
+
+        <TextView
+            android:id="@+id/textViewJk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="JK" />
+
+        <TextView
+            android:id="@+id/textViewHobi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Hobi" />
 
     </LinearLayout>
 </ScrollView>
