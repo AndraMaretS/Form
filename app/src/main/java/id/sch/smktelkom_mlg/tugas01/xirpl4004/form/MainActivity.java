@@ -99,6 +99,16 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 tvJk.setText("Jenis Kelamin : " + Jk);
             }
+            String hobi = "\n";
+            int startlen = hobi.length();
+            if (cbOR.isChecked()) hobi += cbOR.getText() + "\n";
+            if (cbBaca.isChecked()) hobi += cbBaca.getText() + "\n";
+            if (cbSeni.isChecked()) hobi += cbSeni.getText() + "\n";
+            if (hobi.length() == startlen) {
+                tvHobi.setText(hobi += "Anda belum memilih hoby\n");
+            } else {
+                tvHobi.setText("\nHoby anda :" + hobi);
+            }
         }
     }
 
