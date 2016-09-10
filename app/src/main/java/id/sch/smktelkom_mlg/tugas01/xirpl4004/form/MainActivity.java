@@ -83,10 +83,10 @@ public class MainActivity extends AppCompatActivity {
             String tgl = etTgl.getText().toString();
             String kota = spKota.getSelectedItem().toString();
             String provinsi = spProvinsi.getSelectedItem().toString();
-            tvHasil.setText("NIS                    : " + nis + "\n" +
-                    "Nama                : " + nama + "\n" +
-                    "Asal                   : " + kota + ", " + provinsi + "\n" +
-                    "Tanggal Lahir   : " + tgl);
+            tvHasil.setText("NIS : " + nis + "\n" +
+                    "Nama : " + nama + "\n" +
+                    "Asal : " + kota + ", " + provinsi + "\n" +
+                    "Tanggal Lahir : " + tgl);
 
             String Jk = null;
             if (rbLk.isChecked()) {
@@ -99,15 +99,15 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 tvJk.setText("Jenis Kelamin : " + Jk);
             }
-            String hobi = "\n";
+            String hobi = "";
             int startlen = hobi.length();
             if (cbOR.isChecked()) hobi += cbOR.getText() + "\n";
             if (cbBaca.isChecked()) hobi += cbBaca.getText() + "\n";
             if (cbSeni.isChecked()) hobi += cbSeni.getText() + "\n";
             if (hobi.length() == startlen) {
-                tvHobi.setText(hobi += "Anda belum memilih hoby\n");
+                tvHobi.setText("Anda belum memilih hoby\n");
             } else {
-                tvHobi.setText("\nHoby anda :" + hobi);
+                tvHobi.setText("Hoby anda           :" + hobi);
             }
         }
     }
