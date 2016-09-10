@@ -43,8 +43,11 @@
 
         <EditText
             android:id="@+id/editTextNis"
-            android:layout_width="361dp"
-            android:layout_height="wrap_content" />
+            android:layout_width="323dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:inputType="numberSigned" />
 
         <TextView
             android:id="@+id/textView2"
@@ -78,7 +81,9 @@
         <EditText
             android:id="@+id/editTextTglLhr"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberSigned" />
 
         <TextView
             android:id="@+id/textView5"

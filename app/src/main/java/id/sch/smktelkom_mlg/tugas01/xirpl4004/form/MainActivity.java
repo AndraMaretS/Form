@@ -27,18 +27,58 @@ public class MainActivity extends AppCompatActivity {
         buttonOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doEditText();
+                doProses();
             }
         });
     }
 
-    private void doEditText() {
+    private void doProses() {
+        if (isValid()) {
+            String nis = etNis.getText().toString();
+            String nama = etNama.getText().toString();
+            String tgl = etTgl.getText().toString();
+            tvHasil.setText("NIS                    : " + nis + "\n" +
+                    "Nama                : " + nama + "\n" +
+                    "Tanggal Lahir   : " + tgl);
+        }
+    }
+
+    private boolean isValid() {
+        boolean valid = true;
+
         String nis = etNis.getText().toString();
         String nama = etNama.getText().toString();
         String tgl = etTgl.getText().toString();
-        tvHasil.setText("NIS                    : " + nis + "\n" +
-                "Nama                  : " + nama + "\n" +
-                "Tanggal Lahi   : " + tgl);
+
+        if (nis.isEmpty()) {
+            etNis.setError("Nis belum diisi");
+            valid = false;
+        } else if (nis.length() != 6) {
+            etNis.setError("Nis harus 6 digit");
+            valid = false;
+        } else {
+            etNis.setError(null);
+        }
+
+        if (nama.isEmpty()) {
+            etNama.setError("Nama belum diisi");
+            valid = false;
+        } else if (nama.length() < 3) {
+            etNama.setError("Nama minimal 3 karakter");
+            valid = false;
+        } else {
+            etNama.setError(null);
+        }
+
+        if (tgl.isEmpty()) {
+            etTgl.setError("Tanggal Kelahiran belum diisi");
+            valid = false;
+        } else if (tgl.length() != 8) {
+            etTgl.setError("Format Tahun Kelahiran harus ddmmyyyy");
+        } else {
+            etTgl.setError(null);
+        }
+        return valid;
     }
 
 
