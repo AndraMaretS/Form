@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText etNis, etNama, etTgl;
     Button buttonOK;
-    TextView tvHasil, tvJk, tvHobi;
+    TextView tvHasil, tvJk, tvHobi, tvData;
     RadioButton rbLk, rbPr;
     Spinner spProvinsi, spKota;
     CheckBox cbOR, cbBaca, cbSeni;
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        setTitle("Andraid");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         tvHasil = (TextView) findViewById(R.id.textViewHasil);
         tvJk = (TextView) findViewById(R.id.textViewJk);
         tvHobi = (TextView) findViewById(R.id.textViewHobi);
+        tvData = (TextView) findViewById(R.id.textViewData);
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listKota);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -83,10 +85,11 @@ public class MainActivity extends AppCompatActivity {
             String tgl = etTgl.getText().toString();
             String kota = spKota.getSelectedItem().toString();
             String provinsi = spProvinsi.getSelectedItem().toString();
-            tvHasil.setText("NIS : " + nis + "\n" +
-                    "Nama : " + nama + "\n" +
-                    "Asal : " + kota + ", " + provinsi + "\n" +
-                    "Tanggal Lahir : " + tgl);
+            tvData.setText("\nData Siswa\n");
+            tvHasil.setText("NISN                 : " + nis + "\n" +
+                    "Nama               : " + nama + "\n" +
+                    "Asal                  : " + kota + ", " + provinsi + "\n" +
+                    "Tanggal Lahir  : " + tgl);
 
             String Jk = null;
             if (rbLk.isChecked()) {
@@ -95,19 +98,19 @@ public class MainActivity extends AppCompatActivity {
                 Jk = rbPr.getText().toString();
             }
             if (Jk == null) {
-                tvJk.setText("Anda belum memilih Data Jenis KElamin");
+                tvJk.setText("Anda belum memilih Data Jenis Kelamin");
             } else {
                 tvJk.setText("Jenis Kelamin : " + Jk);
             }
             String hobi = "";
             int startlen = hobi.length();
-            if (cbOR.isChecked()) hobi += cbOR.getText() + "\n";
-            if (cbBaca.isChecked()) hobi += cbBaca.getText() + "\n";
-            if (cbSeni.isChecked()) hobi += cbSeni.getText() + "\n";
+            if (cbOR.isChecked()) hobi += cbOR.getText() + ", ";
+            if (cbBaca.isChecked()) hobi += cbBaca.getText() + ", ";
+            if (cbSeni.isChecked()) hobi += cbSeni.getText();
             if (hobi.length() == startlen) {
                 tvHobi.setText("Anda belum memilih hoby\n");
             } else {
-                tvHobi.setText("Hoby anda           :" + hobi);
+                tvHobi.setText("Hoby anda      : " + hobi);
             }
         }
     }
@@ -120,10 +123,10 @@ public class MainActivity extends AppCompatActivity {
         String tgl = etTgl.getText().toString();
 
         if (nis.isEmpty()) {
-            etNis.setError("Nis belum diisi");
+            etNis.setError("Nisn belum diisi");
             valid = false;
         } else if (nis.length() != 6) {
-            etNis.setError("Nis harus 6 digit");
+            etNis.setError("Nisn harus 6 digit");
             valid = false;
         } else {
             etNis.setError(null);
